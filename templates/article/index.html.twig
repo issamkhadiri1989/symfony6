@@ -1,0 +1,31 @@
+{% extends 'article/layout.html.twig' %}
+{% block title %}Hello ArticleController!{% endblock %}
+{% block content %}
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            {% for article in articles %}
+                <div class="post-preview">
+                    <a href="{{ url('article_view', {slug: article.slug}) }}">
+                        <h2 class="post-title">
+                            {{ article.title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            Problems look mighty small from 150 miles up
+                        </h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">{{ article.author.email }}</a>
+                        on {{ article.publicationDate|date('F d, Y') }}
+                    </p>
+                </div>
+                {% if loop.last == false %}
+                    <hr class="my-4"/>
+                {% endif %}
+            {% endfor %}
+            <div class="d-flex justify-content-end mb-4">
+                <a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
