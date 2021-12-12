@@ -1,0 +1,5 @@
+parameters:
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - '#Cannot access property \$vars on Symfony\\Component\\Form\\FormView\|null.#'
+    checkGenericClassInNonGenericObjectType: false
