@@ -26,4 +26,8 @@ composer require stof/doctrine-extensions-bundle
 
 After cloning the project, you need to run the following commands :
 
-
+```
+composer install
+npm install
+npm run dev
+```
