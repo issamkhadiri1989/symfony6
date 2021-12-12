@@ -30,4 +30,6 @@ After cloning the project, you need to run the following commands :
 composer install
 npm install
 npm run dev
+php bin/console doctrine:schema:update --force
+php bin/console doctrine:fixtures:load
 ```
