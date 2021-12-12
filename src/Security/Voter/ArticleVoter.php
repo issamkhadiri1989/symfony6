@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace App\Security\Voter;
 
 //<editor-fold desc="Use statements">
-use App\Entity\Article;
-use App\Entity\User;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Authorization\Voter\Voter;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\{Article, User};
+use Symfony\Component\Security\Core\{Authentication\Token\TokenInterface,
+    Authorization\Voter\Voter,
+    Security,
+    User\UserInterface};
 
 //</editor-fold>
 
@@ -65,7 +64,7 @@ class ArticleVoter extends Voter
      * @param Article $article The article instance
      * @param User    $user    The user instance
      *
-     * @return bool
+     * @return bool True if the article is viewable. False if not
      */
     private function articleViewable(Article $article, User $user): bool
     {
@@ -82,7 +81,7 @@ class ArticleVoter extends Voter
      * @param Article $article The article instance
      * @param User    $user    The user instance
      *
-     * @return bool
+     * @return bool True if the article is editable. False if not
      */
     private function articleEditable(Article $article, User $user): bool
     {

@@ -1,13 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 //<editor-fold desc="use statements">
+
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 //</editor-fold>
 
 #[Route('/articles', name: 'article_')]
@@ -32,7 +36,6 @@ class ArticleController extends AbstractController
 
         return $this->render(view: 'article/index.html.twig', parameters: ['articles' => $articles]);
     }
-
 
     /**
      * Edit article.

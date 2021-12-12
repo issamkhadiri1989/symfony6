@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures;
 
 use App\Entity\{Article, User};
@@ -32,14 +34,14 @@ class AppFixtures extends Fixture
         $user->setPassword($hashedPassword);
         $manager->persist($user);
 
-        for ($i=1; $i<= self::COUNT_ARTICLES; $i++) {
+        for ($i = 1; $i <= self::COUNT_ARTICLES; ++$i) {
             $article = (new Article())
                 ->setAuthor($user)
                 ->setTitle($this->faker->sentence(6))
                 ->setDraft($this->faker->boolean())
                 ->setPublicationDate($this->faker->dateTimeThisMonth())
                 ->setSubtitle($this->faker->sentence(\rand(6, 10)))
-                ->setContent('<p>' . \implode('</p><p>', $this->faker->paragraphs(\rand(5, 18))) . '</p>');
+                ->setContent('<p>'.\implode('</p><p>', $this->faker->paragraphs(\rand(5, 18))).'</p>');
             $manager->persist($article);
         }
         $manager->flush();

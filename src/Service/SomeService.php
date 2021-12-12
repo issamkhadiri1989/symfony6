@@ -12,7 +12,7 @@ class SomeService
     {
     }
 
-    public function someDummyMethod()
+    public function someDummyMethod(): void
     {
         if (true === $this->security->isGranted('...')) {
             // ... do stuff only if granted
