@@ -1,16 +1,20 @@
-# This file is the entry point to configure your own services.
-# Files in the packages/ subdirectory configure your dependencies.
 
-# Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    # Read data from an env variable
+    app.noreply: '%env(MAIL_FROM)%'
+    # A boolean parameter. It can be any primitive value
+    app.maintenance: false
+    # A class constant
+    app.choices: !php/const App\Entity\Product::CHOICES
+    app.media_directory: '%kernel.project_dir%/public/uploads'
 
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-
+        bind:
+            string $mediaDirectory: '%app.media_directory%'
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
@@ -23,3 +27,29 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+#    app.php_file_manager:
+#        class: App\Service\PhpFileManager
+#    App\Service\PhpFileManager: '@app.php_file_manager'
+
+    App\Service\AbstractFileManager: '@App\Service\PhpFileManager'
+
+    # Inject ImageFileManager when the abstract class is injected and the argument name = $imageManager
+    App\Service\AbstractFileManager $imageManager: '@App\Service\ImageFileManager'
+
+#    App\Service\SomeService:
+#        arguments:
+#            $arg1: 'some value'
+
+    # The same service with different configurations
+    app.some_service.image:
+        class: App\Service\SomeService
+        arguments:
+            $arg1: '/path/to/image/directory'
+
+    app.some_service.pdf:
+        class: App\Service\SomeService
+        arguments:
+            $arg1: '/path/to/pdf/directory'
+
+    # Add an alias to the default service
+    App\Service\SomeService: '@app.some_service.pdf'
