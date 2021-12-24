@@ -1,0 +1,35 @@
+{#
+    if you like to use getBlockPrefix function, then put here whatever you've put as return value.
+    for example `app_patient_row`
+#}
+{% block patient_row %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                {{ form_label(form.fullName) }}
+                {{ form_widget(form.fullName) }}
+                <small class="form-text text-muted">
+                    {{ form_help(form.fullName) }}
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            {{ form_label(form.phoneNumber) }}
+            {{ form_widget(form.phoneNumber) }}
+            <small class="form-text text-muted">
+                {{ form_help(form.phoneNumber) }}
+            </small>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            {{ form_label(form.yearOfBirth) }}
+            {{ form_widget(form.yearOfBirth) }}
+            <small class="form-text text-muted">
+                {{ form_help(form.yearOfBirth) }}
+            </small>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'default/layout.html.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <p>
+                <a href="{{ url('add_event') }}" class="btn btn-info">New appointment</a>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div id='calendar'></div>
+        </div>
+    </div>
+{% endblock %}

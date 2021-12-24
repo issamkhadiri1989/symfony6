@@ -1,0 +1,34 @@
+{% form_theme form _self %}
+{% extends 'default/layout.html.twig' %}
+{% block content %}
+    <div class="card">
+        {{ form_start(form) }}
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_row(form.startDate) }}
+                    {{ form_row(form.description) }}
+                    {{ form_row(form.duration) }}
+                    {{ form_row(form.state) }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form_row(form.patient) }}
+                    {{ form_errors(form) }}
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success">
+                Submit
+            </button>
+            <button type="reset" class="btn btn-secondary">
+                Reset
+            </button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block _appointment_patient_errors %}
+    xxx
+{% endblock %}
