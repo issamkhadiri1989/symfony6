@@ -28,7 +28,8 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $user = (new User())->setEmail('no-reply@system.com')
-            ->setRoles(['ROLE_ADMIN']);
+            ->setRoles(['ROLE_ADMIN'])
+            ->setEnabled(false);
         $plainPassword = '123456';
         $hashedPassword = $this->hasher->hashPassword($user, $plainPassword);
         $user->setPassword($hashedPassword);

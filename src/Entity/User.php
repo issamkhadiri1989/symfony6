@@ -42,6 +42,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private ?Collection $articles;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private ?bool $enabled;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -143,6 +148,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $article->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(?bool $enabled): self
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }
