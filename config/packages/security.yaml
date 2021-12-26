@@ -1,4 +1,7 @@
 security:
+  access_decision_manager:
+    strategy: affirmative
+
   enable_authenticator_manager: true
   # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
   password_hashers:
@@ -20,7 +23,9 @@ security:
     main:
       lazy: true
       provider: app_user_provider
-      custom_authenticator: App\Security\LoginFormAuthenticator
+      custom_authenticator:
+        - App\Security\LoginFormAuthenticator
+        - App\Security\TokenAuthenticator
       user_checker: App\Security\BlackListedChecker
       logout:
         path: app_logout

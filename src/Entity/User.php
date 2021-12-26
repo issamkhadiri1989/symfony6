@@ -47,6 +47,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private ?bool $enabled;
 
+    /**
+     * @ORM\Column(type="text", unique=true)
+     */
+    private ?string $token;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -160,6 +165,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEnabled(?bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }
