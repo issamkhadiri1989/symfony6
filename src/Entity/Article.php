@@ -28,23 +28,23 @@ class Article
     /**
      * @ORM\Column(type="text")
      */
-    private $content;
+    private string|null $content;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
      */
-    private ?User $author;
+    private User|null $author;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private ?bool $draft;
+    private bool|null $draft;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private ?string $subtitle;
+    private string|null $subtitle;
 
     /**
      * @ORM\Column(type="datetime")
@@ -55,7 +55,7 @@ class Article
      * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(type="text")
      */
-    private ?string $slug;
+    private string|null $slug;
 
     public function getId(): ?int
     {
@@ -67,7 +67,7 @@ class Article
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
@@ -79,7 +79,7 @@ class Article
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 
@@ -103,7 +103,7 @@ class Article
         return $this->draft;
     }
 
-    public function setDraft(bool $draft): self
+    public function setDraft(?bool $draft): self
     {
         $this->draft = $draft;
 
@@ -115,7 +115,7 @@ class Article
         return $this->subtitle;
     }
 
-    public function setSubtitle(string $subtitle): self
+    public function setSubtitle(?string $subtitle): self
     {
         $this->subtitle = $subtitle;
 
@@ -127,7 +127,7 @@ class Article
         return $this->publicationDate;
     }
 
-    public function setPublicationDate(\DateTimeInterface $publicationDate): self
+    public function setPublicationDate(?\DateTimeInterface $publicationDate): self
     {
         $this->publicationDate = $publicationDate;
 
@@ -139,7 +139,7 @@ class Article
         return $this->slug;
     }
 
-    public function setSlug(string $slug): self
+    public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
 

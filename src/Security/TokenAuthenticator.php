@@ -31,8 +31,8 @@ class TokenAuthenticator extends AbstractAuthenticator
      */
     public function authenticate(Request $request): Passport
     {
-        $token = $request->query->get('token');
-        if (null === $token || '' === $token) {
+        $token = (string) $request->query->get('token', '');
+        if ('' === $token) {
             throw new CustomUserMessageAuthenticationException('The token is not provided');
         }
 

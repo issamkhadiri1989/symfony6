@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% for label, messages in app.flashes %}
+        <div class="alert alert-{{ label }}">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    {{ form_start(form) }}
+    {{ form_row(form.email) }}
+    <button class="btn btn-success">
+        Send Login link
+    </button>
+    {{ form_end(form) }}
+{% endblock %}

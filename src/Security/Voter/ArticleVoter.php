@@ -53,7 +53,8 @@ class ArticleVoter extends Voter
 
         return match ($attribute) {
             'view' => $this->articleViewable($article, $user),
-            'edit' => $this->articleEditable($article, $user)
+            'edit' => $this->articleEditable($article, $user),
+            default => throw new \UnhandledMatchError('attribute not handled'),
         };
         //</editor-fold>
     }

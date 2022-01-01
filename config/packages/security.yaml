@@ -29,6 +29,14 @@ security:
       user_checker: App\Security\BlackListedChecker
       logout:
         path: app_logout
+      login_link:
+        default_target_path: /
+        check_route: login_check
+        signature_properties: [id,email]
+        lifetime: 600 #The link is still alive only for 1 minute
+        max_uses: 1 # The login links must be available for 1 use only
+        success_handler: App\Security\Authentication\AuthenticationSuccessHandler
+        failure_handler: App\Security\Authentication\AuthenticationFailureHandler
 #  access_decision_manager:
 #    strategy: unanimous
 #    allow_if_all_abstain: false

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -30,5 +30,21 @@ class SecurityController extends AbstractController
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    #[Route(path: '/login-check', name: 'login_check')]
+    public function check(Request $request): Response
+    {
+        // get the login link query parameters
+        $expires = $request->query->get('expires');
+        $username = $request->query->get('user');
+        $hash = $request->query->get('hash');
+
+        // and render a template with the button
+        return $this->render('security/process_login_link.html.twig', [
+            'expires' => $expires,
+            'user' => $username,
+            'hash' => $hash,
+        ]);
     }
 }

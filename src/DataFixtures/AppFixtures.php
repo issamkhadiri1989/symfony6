@@ -44,7 +44,7 @@ class AppFixtures extends Fixture
                 ->setDraft($this->faker->boolean())
                 ->setPublicationDate($this->faker->dateTimeThisMonth())
                 ->setSubtitle($this->faker->sentence(\rand(6, 10)))
-                ->setContent('<p>'.\implode('</p><p>', $this->faker->paragraphs(\rand(5, 18))).'</p>');
+                ->setContent('<p>'.\implode('</p><p>', (array) $this->faker->paragraphs(\rand(5, 18))).'</p>');
             $manager->persist($article);
         }
         $manager->flush();
