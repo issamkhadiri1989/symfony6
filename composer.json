@@ -54,7 +54,7 @@
         "symfony/browser-kit": "6.*",
         "symfony/css-selector": "6.*",
         "symfony/debug-bundle": "6.*",
-        "symfony/maker-bundle": "^1.0",
+        "symfony/maker-bundle": "^1.36",
         "symfony/phpunit-bridge": "^6",
         "symfony/stopwatch": "6.*",
         "symfony/web-profiler-bundle": "6.*"
@@ -64,11 +64,16 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "symfony/flex": true,
+            "symfony/runtime": true
+        }
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "App\\Acme\\": "Acme/"
         }
     },
     "autoload-dev": {

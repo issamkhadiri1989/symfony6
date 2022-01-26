@@ -1,0 +1,4 @@
+acme_test:
+    vendors:
+        facebook:
+            email: 'no-reply@facebook.com'

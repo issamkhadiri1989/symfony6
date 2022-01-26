@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\Acme\TestBundle\Service\Acme:
+        public: true
+        class: 'App\Acme\TestBundle\Service\Acme'
+        arguments:
+            -
